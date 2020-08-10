@@ -83,7 +83,7 @@
     WebDataBinder에 프로퍼티 에디터를 직접 등록해줘야 한다. 
     @InitBinder가 붙은 initBinder() 메소드는 메소드는 메소드 파라미터를 바인딩하기 전에 자동으로 호출된다.
     
-    ```
+    ```java
     @InitBinder
     pulbic void initBinder(WebDataBinder dataBinder) { 
         dataBinder.registerCustomEditor(Level.class , new LevlePropertyEditor());  
