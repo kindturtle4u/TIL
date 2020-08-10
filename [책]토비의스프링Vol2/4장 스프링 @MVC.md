@@ -69,13 +69,13 @@
 
 ### 4.3.1 PropertyEditor
 - 디폴트 프로퍼티 에디터
-- 커스텀 프로퍼티 에디터
-    * 스프링이 디폴트로 등록해서 적용해주는 프로퍼티 에디터는 자바의 기본적인 타입 20여 가지에 불과하다.
-    * 애플리케이션에서 직접 정의한 타입으로 직접 바인딩을 하고 싶다면, 프로퍼티 에디터를 직접 작성하면된다.        
+- 커스텀 프로퍼티 에디터  
+    스프링이 디폴트로 등록해서 적용해주는 프로퍼티 에디터는 자바의 기본적인 타입 20여 가지에 불과하다.    
+    애플리케이션에서 직접 정의한 타입으로 직접 바인딩을 하고 싶다면, 프로퍼티 에디터를 직접 작성하면된다.        
 
 - @InitBinder   
-   @MVC에는 스프링 컨테이너에 정의된 디폴트 프로퍼티 에디터만 등록되어 있다.  
-   여기에 커스텀프로퍼티에디터를 추가해서 타입 변환이 필요할 때 사용되도록 만들어야 한다.
+    @MVC에는 스프링 컨테이너에 정의된 디폴트 프로퍼티 에디터만 등록되어 있다.  
+    여기에 커스텀프로퍼티에디터를 추가해서 타입 변환이 필요할 때 사용되도록 만들어야 한다.
    
     * AnnotationMethodHandlerAdapter는 @RequestParam이나 @ModelAttribute,@PathVariable 등 파라미터변수에 바인딩해주는
     작업이 필요한 애노테이션을 만나면 먼저 WebDataBinder를 만든다.
@@ -85,11 +85,21 @@
     
     ```java
     @InitBinder
-    pulbic void initBinder(WebDataBinder dataBinder) { 
+    public void initBinder(WebDataBinder dataBinder) { 
         dataBinder.registerCustomEditor(Level.class , new LevlePropertyEditor());  
     }
     ```
-- WebBindingInitializer
+- WebBindingInitializer    
+@InitBinder 메소드에서 추가한 커스텀 프로퍼티 에디터는 메소드가 있는 컨트롤러 클래스 안에서만 동작한다.   
+**모든 컨트롤러에 적용이 필요한경우 WebBindingInitializer를 이용하면 된다.**    
     
-  
+    ```java
+      public class MyWebBindingInitializer implements WebBindingInitializer {
+          public void initBinder(WebDataBinder binder , WebRequest request) { 
+              binder.registerCustomEditor(Level.class , new LevelPropertyEditor());
+          }
+      }
+    ```
+- 프로토타입 빈 프로퍼티 에디터
+
        
