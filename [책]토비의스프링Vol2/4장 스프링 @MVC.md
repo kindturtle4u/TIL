@@ -80,8 +80,8 @@
     * AnnotationMethodHandlerAdapter는 @RequestParam이나 @ModelAttribute,@PathVariable 등 파라미터변수에 바인딩해주는
     작업이 필요한 애노테이션을 만나면 먼저 WebDataBinder를 만든다.
     * 개발자가 직접 만든 커스텀 프로퍼티 에디터를 @RequestParam과 같은 메소드 파라미터 바인딩에 적용하려면
-    WebDataBinder에 프로퍼티 에디터를 직접 등록해줘야 한다. 
-    @InitBinder가 붙은 initBinder() 메소드는 메소드는 메소드 파라미터를 바인딩하기 전에 자동으로 호출된다.
+    `WebDataBinder`에 프로퍼티 에디터를 직접 등록해줘야 한다. 
+    `@InitBinder`가 붙은 initBinder() 메소드는 메소드는 메소드 파라미터를 바인딩하기 전에 자동으로 호출된다.
     
     ```java
     @InitBinder
@@ -90,7 +90,7 @@
     }
     ```
 - WebBindingInitializer    
-@InitBinder 메소드에서 추가한 커스텀 프로퍼티 에디터는 메소드가 있는 컨트롤러 클래스 안에서만 동작한다.   
+`@InitBinder` 메소드에서 추가한 커스텀 프로퍼티 에디터는 메소드가 있는 컨트롤러 클래스 안에서만 동작한다.   
 **모든 컨트롤러에 적용이 필요한경우 WebBindingInitializer를 이용하면 된다.**    
     
     ```java
@@ -101,5 +101,9 @@
       }
     ```
 - 프로토타입 빈 프로퍼티 에디터
+***프로퍼티 에디터는 싱글톤 빈으로 등록해서 공유해서는 안된다(멀티스레드 환경 적용 불가)***   
+프로퍼티 에디터가 다른 빈을 DI받을 수 있도록 자신도 빈으로서 등록되면서 동시에 매선 새로운 오브젝트를 만들어서 사용할 수 
+있으려면 프로토타입 스코프의 빈으로 만들어져야 한다.
 
+### 4.3.2 Converter와 Formatter
        
