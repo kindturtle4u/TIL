@@ -28,6 +28,7 @@
 - Map
 - Model
 - ModelMap
+
 - @ModelAttribute
     > 스프링은 String, int 등은 @RequestParam으로 보고    
       그외의 복잡한 오브젝트는 모두 @ModelAttribute가 생략됬다고 간주한다.   
@@ -35,7 +36,7 @@
 - Errors,BindingResult
 - SessionStatus
 - @RequestBody
-        AnnotationMethodHandlerAdapter에는 HttpMessageConverter타입의 메세지 변환기가 여러개 등록되어있다.
-        @Requestbody가 붙은 파라미터가 있으면 HTTP 요청의 미디어 타입과 파라미터 타입을 먼저 확인한다.
+    > AnnotationMethodHandlerAdapter에는 HttpMessageConverter타입의 메세지 변환기가 여러개 등록되어있다.      
+      @Requestbody가 붙은 파라미터가 있으면 HTTP 요청의 미디어 타입과 파라미터 타입을 먼저 확인한다.
 - @CookieValue
 - @Valid
