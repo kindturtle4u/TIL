@@ -83,12 +83,12 @@
     `WebDataBinder`에 프로퍼티 에디터를 직접 등록해줘야 한다. 
     `@InitBinder`가 붙은 initBinder() 메소드는 메소드는 메소드 파라미터를 바인딩하기 전에 자동으로 호출된다.
     
-    ```java
-    @InitBinder
-    public void initBinder(WebDataBinder dataBinder) { 
-        dataBinder.registerCustomEditor(Level.class , new LevlePropertyEditor());  
-    }
-    ```
+        ```java
+        @InitBinder
+        public void initBinder(WebDataBinder dataBinder) { 
+            dataBinder.registerCustomEditor(Level.class , new LevlePropertyEditor());  
+        }
+        ```
 - WebBindingInitializer    
 `@InitBinder` 메소드에서 추가한 커스텀 프로퍼티 에디터는 메소드가 있는 컨트롤러 클래스 안에서만 동작한다.   
 **모든 컨트롤러에 적용이 필요한경우 WebBindingInitializer를 이용하면 된다.**    
@@ -106,4 +106,36 @@
 있으려면 프로토타입 스코프의 빈으로 만들어져야 한다.
 
 ### 4.3.2 Converter와 Formatter
-       
+**스프링 3.0에는 PropertyEditor를 대신할 수 있는 새로운 타입 변환 API가 도입됐다. 바로 `Converter` 인터페이스다.***
+멀티스레드 환경에서 안전하게 공유해서 사용가능
+
+- Converter   
+양방향 전환 기능을 제공하는 `PropertyEditor`와 다르게 `Converter` 메소드는 소스타입에서 타깃 타입으로의 단반향 변환만 지원한다.
+
+    ```java
+    public interface Converter<S, T> {
+        T convert(S Source);
+    }
+    ```
+- Formatter와 FormattingConversionService   
+스트링 타입의 폼 필드 정보와 컨트롤러 메소드 파라미터 사이에 양방향으로 적용할 수 있도록 두개의 변환 메소드를 갖고 있다.
+
+    * @NumberFormat   
+    다양한 타입의 숫자 변환을 지원하는 포멧터다. 문자열로 표현된 숫자를 java.lang.Number 타입의 오브젝트로 상호 변환해준다.
+        ```java
+        class product {
+          @NumberFormat("$###,##0.00")
+          BigDecimal price;
+        }
+        ```
+    * @DateTimeFormat   
+- 바인딩 기술의 적용 우선순위와 활용전략
+    * 사용자 정의 타입의 바인딩을 위한 일괄 적용 : Converter
+    * 필드와 메소드 파라미터,애노테이션 드으이 메타정보를 활용하는 조건부 변환 기능 : ConditionalGenericConverter
+    * 애노테이션 정보를 활용한 HTTP 요청과 모델 필드 바인딩 : AnnotaionFormatterFactory와 Formatter
+    * 특정 필드에만 적용되는 변환 기능 : PropertyEditor
+      
+    
+    
+  
+  
