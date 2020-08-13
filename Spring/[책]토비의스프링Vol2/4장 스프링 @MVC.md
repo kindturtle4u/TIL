@@ -94,11 +94,11 @@
 **모든 컨트롤러에 적용이 필요한경우 WebBindingInitializer를 이용하면 된다.**    
     
     ```java
-      public class MyWebBindingInitializer implements WebBindingInitializer {
-          public void initBinder(WebDataBinder binder , WebRequest request) { 
-              binder.registerCustomEditor(Level.class , new LevelPropertyEditor());
-          }
+    public class MyWebBindingInitializer implements WebBindingInitializer {
+      public void initBinder(WebDataBinder binder , WebRequest request) { 
+          binder.registerCustomEditor(Level.class , new LevelPropertyEditor());
       }
+    }
     ```
 - 프로토타입 빈 프로퍼티 에디터
 ***프로퍼티 에디터는 싱글톤 빈으로 등록해서 공유해서는 안된다(멀티스레드 환경 적용 불가)***   
@@ -135,7 +135,91 @@
     * 애노테이션 정보를 활용한 HTTP 요청과 모델 필드 바인딩 : AnnotaionFormatterFactory와 Formatter
     * 특정 필드에만 적용되는 변환 기능 : PropertyEditor
       
+### 4.3.3 WebDataBinder 설정항목
+WebDataBinder는 HTTP 요청정보를 컨트롤러 메소드의 파라미너타 모델에 바인딩 할때 사용되는 바인딩 오브젝트다.
+
+- allowedField , disallowedFields
+- requiredFields
+- fieldMarkerPrefix
+- fieldDefaultPrefix
+
+### 4.3.4 Validator와 BindingResult, Errors
+
+- Validator   
+    스프링에서 범용적으로 사용할 수 있는 오브젝트 검증기를 정의 할 수 있는 API다.   
+    @Controller로 HTTP 요청을 @ModelAttribute 모델에 바인딩 할 때 주로 사용된다.   
+    비지니스 로직에서 검증로직을 분리하고 싶을 때도 사용할 수 있다.
+    ```java
+    public interface Validator {
+        boolean supports(Class<?> clazz);
+        void validate(Object target, Errors errors);
+    }
+    ```
+    스프링에서는 네 가지 방법으로 Validator를 적용할 수 있다.
     
+    * 컨트롤러 메소드 내의 코드
+        ```java
+        @Controller
+        public class UserController {
+          @Autowired UserValidator validator;
+          
+          @RequestMapping("/add")
+          public void add(@ModelAttribute User user, BindingResult result) {
+              this.validator.validate(user, result);
+              if (result.hasErrors()) {
+                // 오류가 발견되 경우의 작업
+              } else {
+                  // 오류가 없을 때의 작업  
+              }
+          }     
+        }
+        ```   
+      
+    * Valid를 이용한 자동검증   
+        ```java
+        @Controller
+        public class UserController {
+            @Autowired UserValidator validator;
+            
+            @InitBinder
+            public void initBinder(WebDataBinder dataBinder) {
+                dataBinder.setValidator(this.validator);
+            }
+            
+            @RequestMapping("/add")
+            public void add(@ModelAttribute @Valid User user, BindingResult result) {
+            }
+        }
+        ```
+    * 서비스 계층 오브젝트에서 검증        
+    * 서비스 계층을 활용하는 Validator
+    
+- JSR-303 빈 검증 기능    
+    모델 오브젝트의 필드에 달린 제약조건 애노테이션을 이용해 검증을 진행할 수 있다.
+    ```java
+    public class User {
+        @NotNull
+        String name;
+        
+        @Min(0)
+        int age;
+    }
+    ```
+    EX ) @MemberNo 애노테이션 제약조건 정의     
+   ```java
+    @Target({ElementType.METHOD, ElementType.FIELD})
+    @Retention(RetentionPolicy.RUNTIME)
+    @Constraint(validateBy=MemberNoValidator.class)
+    public @interface MemberNo {
+    
+    }   
+    ```
+  
+- BindingResult와 MessageCodeResolver
+- MesssageSource
+
+### 4.3.5 모델의 일생
+        
     
   
   
