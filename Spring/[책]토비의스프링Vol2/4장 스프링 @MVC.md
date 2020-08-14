@@ -219,6 +219,42 @@ WebDataBinder는 HTTP 요청정보를 컨트롤러 메소드의 파라미너타 
 - MesssageSource
 
 ### 4.3.5 모델의 일생
+모델은 MVC 아키텍처에서 정보를 담당하는 컴포넌트다.
+
+- 컨트롤러 메소드 부터 뷰까지
+    * ModelAndView의 모델 맵   
+        @ModelAttribute 오브젝트 뿐만아니라 바인딩과 검증 결과를 담은 BindingResult 타입의 오브젝트도 ModelAndView의 모델 맵에 자동으로 추가된다.
+    * WebDataBinder에 기본적으로 등록된 MessageCodedResolver
+    * 빈으로 등록된 MessageSource와 LocaleResolver
+    * @SessionAttribute 세션 저장 대상 모델 이름
+    * 뷰의 EL과 스프링 태그 또는 매크로
+    
+## 4.4 JSP 뷰와 form 태그
+### 4.4.1 EL과 spring 태그 라이브러리를 이용한 모델 출력
+- 스프링 SpEL   
+    <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>   
+    <spring:eval> 태그를 사용해서 모델이름이 포함된 표현식을 작성하면된다.   
+    <spring:eval expression="user.name" />   
+    
+    SpEL은 오베젝트의 메소드 호출이 가능하다.   
+    <spring:eval expression="user.toString()" />
+    <spring:eval expression='new java.text.DecimalFormat("###,##0.00").format(user.point)' />   
+    
+- 지역화 메시지 출력
+    <spring:message code="greeting" />
+    <spring:message code="greeting" arguments="${user.name}" text="Hi"/> //text 디폴트 메세지 
+    
+### 4.4.2 spring 태그 라이브러리를 이용한 폼 작성
+            
+    
+    
+    
+            
+    
+    
+       
+   
+    
         
     
   
