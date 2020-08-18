@@ -233,7 +233,7 @@ WebDataBinder는 HTTP 요청정보를 컨트롤러 메소드의 파라미너타 
 ### 4.4.1 EL과 spring 태그 라이브러리를 이용한 모델 출력
 - 스프링 SpEL   
     <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>   
-    <spring:eval> 태그를 사용해서 모델이름이 포함된 표현식을 작성하면된다.   
+    <spring:eval&gt; 태그를 사용해서 모델이름이 포함된 표현식을 작성하면된다.   
     <spring:eval expression="user.name" />   
     
     SpEL은 오베젝트의 메소드 호출이 가능하다.   
@@ -245,17 +245,15 @@ WebDataBinder는 HTTP 요청정보를 컨트롤러 메소드의 파라미너타 
     <spring:message code="greeting" arguments="${user.name}" text="Hi"/> //text 디폴트 메세지 
     
 ### 4.4.2 spring 태그 라이브러리를 이용한 폼 작성
-            
+### 4.4.3 form 태그 라이브러리
+- <form:form&gt;
+- <form:input&gt;
+- <form:label&gt;
+- <form:errors&gt;
+- <form:hidden&gt;
+- <form:password&gt; , <form:textarea&gt;
+- <form:checkbox&gt; , <form:checkboxes&gt;
+- <form:radiobutton&gt; , <form:radiobuttons&gt;
+- 커스텀 UI 태그 만들기
     
-    
-    
-            
-    
-    
-       
-   
-    
-        
-    
-  
-  
+
