@@ -303,7 +303,7 @@ WebDataBinder는 HTTP 요청정보를 컨트롤러 메소드의 파라미너타 
     }
     ```    
   메소드 파라미터 정보와 웹 요청정보를 받아서 파라미터 타입과 애노테이션을 참고해 오브젝트를 생성할 수 있으면 이를 리턴하고, 
-  아니라면 UNRESOLVED를 돌려주면된다.
+  아니라면 `UNRESOLVED`를 돌려주면된다.
   
  - ModelAndViewResolver
  
