@@ -256,4 +256,54 @@ WebDataBinder는 HTTP 요청정보를 컨트롤러 메소드의 파라미너타 
 - <form:radiobutton&gt; , <form:radiobuttons&gt;
 - 커스텀 UI 태그 만들기
     
+## 4.5 메시지 컨버터와 AJAX
+메시지 컨버터는 파라미터의 `@RequestBody`와 메소드에 부여한 `@ResponseBody`를 이용해서 쓸 수 있다.
 
+### 4.5.1 메시지 컨버터의 종류
+- ByteArrayHttpMessageConverter       
+- StringHttpMessageConverter
+- FormHttpMessageConverter
+- SourceHttpMessageConverter
+- Jaxb2RootElementHttpMessageConverter
+- MarshallingHttpMessageConverter
+- MappingJacksonHttpMessageConverter
+
+## 4.6 MVC 네입스페이스
+- <mvc:annotation-driven&gt;   
+    애노테이션 방식의 컨트롤러를 사용할때 필요한 DispatcherServlet 전략 빈을 자동으로 등록해준다.
+    
+    * DefaultAnnotationHandlerMapping
+    * AnnotationMethodHandlerAdapter
+    * ConfigurableWebBindingInitializer
+    * 메시지 컨버터
+    * <spring:eval&gt;을 위한 번버전 서비스 노출용 인터셉터      
+    * validator
+    * conversion-service
+    
+- <mvc:interceptors&gt;   
+    ```xml
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/admin/*"/>
+            <bean class="...AdminInterceptor" />
+        <mvc:interceptor>
+    </mvc:interceptors>
+    ```
+- <mvc:view-controller&gt;      
+
+## 4.7 @MVC 확장포인트
+### 4.7.1 AnnotaionMethodHandlerAdapter
+- SessionAttributeStore
+- WebArgumentResolver   
+    애플레케이션에 특화된 컨트롤러 파라미터 타입을 추가할 수 있다.
+    ```java
+    pulbic interface WebArgumentResolver {
+        Object UNRESOLVED = new Object();
+        Object resolveArgument(MethodParameter methodParameter, NativeWebRequest webRequest ) throws Exception;
+    }
+    ```    
+  메소드 파라미터 정보와 웹 요청정보를 받아서 파라미터 타입과 애노테이션을 참고해 오브젝트를 생성할 수 있으면 이를 리턴하고, 
+  아니라면 UNRESOLVED를 돌려주면된다.
+  
+ - ModelAndViewResolver
+ 
