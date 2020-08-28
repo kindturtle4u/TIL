@@ -307,3 +307,51 @@ WebDataBinder는 HTTP 요청정보를 컨트롤러 메소드의 파라미너타 
   
  - ModelAndViewResolver
  
+ ## 4.8 URL과 리소스 관리
+ ### 4.8.1 `<mvc:default-servlet-handler/>`를 이용한 URL관리
+ - 디폴트 서블릿과 URL 매핑 문제
+    `<mvc:default-servlet-handler>` @MVC 컨트롤러가 / 로 시작하는 URL을 자유롭게 사용할 수 있다. 동시에 정적인 리소스는
+    서블릿 컨테이너가 제공하는 디폴트 서블릿이 처리한다.
+    
+### 4.8.2 `<url:resource>`를 이용한 리소스 관리
+정적파일로 구성된 웹 리소스도 손쉽게 모듈화해서 사용할 수 있다.
+
+## 4.9 스프링 3.1의 @MVC
+### 4.9.1 새로운 RequestMapping 전략
+| DispatcherServlet 전략 | 스프링 3.0 | 스프링 3.1 |
+| --- | :---: | ---: |
+| `HandlerMapping` | DefaultAnnotation<br>HandlerMapping | RequestMapping<br>HandlerMapping
+| `HandlerAdapter` | AnnotationMethod<br>HandlerAdapter | RequestMapping<br>HandlerAdapter
+| `HandlerExceptionResolver` | AnnotaionMethodHandler<br>ExceptionResolver | ExceptionHandler<br>ExceptionResolver 
+
+- RequestMapping 메소드와 핸들러 매핑 전략의 불일치
+    ```java
+    public class AuditInterceptor extends HandlerInterceptorAdapter {
+        @Override
+        public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+            HandlerMethod hm = (HandlerMethod)handler;
+            if (hm.getMethodAnnotation(Audit.class) != null) {
+                saveAuditInfo(request,response, handler);
+            }
+    
+            return super.preHandle(request, response, handler);
+        }
+    }
+    ```
+
+- HandlerMethod   
+@RequestMapping이 붙은 메소드의 정보를 추상화한 오브젝트 타입이다.
+    * 빈 오브젝트
+    * 메소드 메타정보
+    * 메소드 파라미터 정보
+    * 메소드 애노테이션 메타정보
+    * 메소드 리턴 값 메타정보
+    
+- @RequestMapping 전략 선택
+    
+### 4.9.2 @RequestMapping 핸들러 매핑: RequestMappingHandlerMapping
+
+
+    
+ 
+ 
