@@ -350,7 +350,9 @@ WebDataBinder는 HTTP 요청정보를 컨트롤러 메소드의 파라미너타 
 - @RequestMapping 전략 선택
     
 ### 4.9.2 @RequestMapping 핸들러 매핑: RequestMappingHandlerMapping
-
+### 4.9.3 @RequestMapping 핸들러 어댑터
+### 4.9.4 @EnableWebMvc와 WebMvcConfigurationSupport를 이용한 @MVC 설정
+ 
 
     
  
