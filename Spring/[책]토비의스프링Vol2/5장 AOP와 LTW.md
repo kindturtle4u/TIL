@@ -40,24 +40,42 @@ AspectJ의 런타임 라이브러리를 클래스패스에 추개해줘야한다
     @within은 @target과 유사하게 타깃 오브젝트의 클래스에 애노테이션이 부여된 것을 찾지만, 선택될 조인 포인트인 메소드는 타깃 클래스에서 선언되어 있어야한다.
     
     * @args   
-    @DomainObject라는 애노테이션이 붙은 단일 파라미터를 갖는 메소드를 선택하는 포인트컷 표현식이다.   
-    @args(com.epril.myproject.annotation.DomainObject)
+        @DomainObject라는 애노테이션이 붙은 단일 파라미터를 갖는 메소드를 선택하는 포인트컷 표현식이다.   
+        @args(com.epril.myproject.annotation.DomainObject)
            
     * @annotation   
-    조인포인트 메소드에 특정 애노테이션이 있는 것만 선정하는 지시자다.   
-    @annotation(org.springframework.transaction.annotation.Transactional)
+        조인포인트 메소드에 특정 애노테이션이 있는 것만 선정하는 지시자다.   
+        @annotation(org.springframework.transaction.annotation.Transactional)
     
     * bean   
-    빈 이름 또는 아이디를 이용해서 선정하는 지시자, 와일드카드(*) 사용할 수 있다.   
-    bean(*Service)
+        빈 이름 또는 아이디를 이용해서 선정하는 지시자, 와일드카드(*) 사용할 수 있다.   
+        bean(*Service)
     
     * &&   
-    두개의 포인트컷 또는 지시자를 AND 조건으로 결합한다.
+        두개의 포인트컷 또는 지시자를 AND 조건으로 결합한다.
     
     * ||, !
-    ||는 OR 조건이다. !는 NOT조건이다.
+        ||는 OR 조건이다. !는 NOT조건이다.
     
 - 어드바이스 메소드와 애노테이션
+    * @Around   
+        프록시를 통해서 타깃 오브젝트의 메소드가 호출되는 전 과정을 모드 담을 수 있는 어드바이스이다.   
+        파라미터로는 ProceedingJoinPoint 타입으 오브젝트를 받는다. 이 오브젝트를 이용해 타깃 오브젝트의 메소드를 실행하고 그 결과를 받을 수 있다.            
+        ```java
+        @Around("myPointcut()")
+        public Object doNothing(ProceedingJoinPoint pjp) throws Throwable {
+            Object ret = pjp.proceed();
+            return ret;
+        }
+        ```   
+        proceed()메소드는 클라이언트가 보낸 파라미터를 그대로 사용해서 타깃 오브젝트의 메소드를 호출하고 그 결과를 돌려준다.
+        
+      
+       
+      
+    
+      
+    
     
     
        
