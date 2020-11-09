@@ -68,17 +68,49 @@ AspectJ의 런타임 라이브러리를 클래스패스에 추개해줘야한다
             return ret;
         }
         ```   
-        proceed()메소드는 클라이언트가 보낸 파라미터를 그대로 사용해서 타깃 오브젝트의 메소드를 호출하고 그 결과를 돌려준다.
+        proceed()메소드는 클라이언트가 보낸 파라미터를 그대로 사용해서 타깃 오브젝트의 메소드를 호출하고 그 결과를 돌려준다.   
+    
+    * @Before   
+        타깃 오브젝트의 메소드가 실행되기 전에 사용되는 어드바이스다.
+        ```java
+        @Before("myPointcut()")
+        public void logJoinPoint(JoinPoint jp) {
+            System.out.println(jp.getSignature().getDeclaringTypeName());
+            System.out.println(js.getSignature().getName());
+            for(Object arg : jp.getArgs()) { System.out.println(arg);}
+        }       
+        ```
+        `JoinPoint`의 getSignature()는 조인 포인트인 메소드에 대한 정보를 가진 Signature 오브젝트를 돌려준다.
         
+    * @AfterReturning   
+        타깃 오브젝트의 메소드가 실행을 마친 뒤 실행되는 어드바이스다. 단, 예외가 발생하지 않고 정상적으로 종료한 경우에만 해당된다.   
+        메소드 리턴 값을 참조할 수 있다. 
+        ```java
+        @AfterReturning(pointcut="myPointcut()", returning="ret")
+        public void logReturnValue(Object ret) {
+          ...
+        }  
+        ```    
       
-       
+    * AfterThrowing   
+        타깃 오브젝트의 메소드를 호출했을 때 예외가 발생하면 실행되는 어드바이스다.
+        ```java
+        @AfterThrowing(pointcut="dayLayer()" , throwing="ex")
+        pulbic void logDAException(DataAccessException ex) {
+          ...
+        }
+        ```
       
-    
-      
-    
-    
-    
-       
-     
-    
-    
+    * After   
+        메소드 실행이 정상 종료됐을 때와 예외가 발생했을 때 모두 실행되는 어드바이스다. 코드에서 finally를 사용했을 때와 비슷한 용도라고 생각하면된다.
+        
+- 파라미터 선언과 바인딩
+- AspectJ를 이용한 AOP의 학습 방법과 적용 전략
+
+## 5.2 AspectJ와 @Configurable
+### 5.2.1 AspectJ AOP
+### 5.2.2 빈이 아닌 오브젝트에 DI 적용하기
+
+## 5.3 로드타임 위버(LTW)
+## 5.4 스프링 3.1의 AOP와 LTW
+## 5.5 정리
