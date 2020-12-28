@@ -12,10 +12,10 @@ AOP는 스프링의 기술 중에서 가장 이해하기 힘든 난해한 용어
 ### 6.2.1 복잡한 의존관계 속의 테스트
 ### 6.2.2 테스트 대상 오브젝트 고립시키기
 ### 6.2.3 단위 테스트와 통합 테스트
-단위 테스트  
+- 단위 테스트  
 테스트 대상 클래스를 목 오브젝트 등의 테스트 대역을 이용해 의존 오브젝트나 외부의 리소스를 사용하지 않도록 고립시켜서 테스트하는 것
 
-통합 테스트  
+- 통합 테스트    
 두개 이상의 성격이나 계층이 다른 오브젝트가 연동하도록 만들어 테스트 하거나, 또는 외부의 DB나 파일, 서비스 등의 리소스가 참여하는 테스트
 두개 이상의 단위가 결합해서 동작하면서 테스트가 수행되는 것
     
@@ -156,9 +156,9 @@ OOP의 클래스와 마찬가지로 애스펙트는 AOP의 기본 모듈이다.
 xmlns:aop=http://www.springframework.org/schema/aop //aop 스키마는 aop네임스페이스를 가지므로 aop접두어를 사용한다.
 
 ```xml
-<aop:config> //AOP설정을 담는 부모 태그다. 필요에 따라 AspectJAdvisorProxyCreator 빈으로 등록해준다.
-    <aop:pointcut id="transactionPointcut" expression="execution(* *..*ServiceImple.upgrade*(..))" /> //expression의 표현식을 프로퍼티로 가진 AspectJExpressionPoincut을 빈으로 등록해준다.
-    <aop:advisor advice-ref="transactionAdvice" pointcut-ref="transactionPointcut" /> //advice와 pointcut의 ref를 프로퍼티로 갖는 DefaultBeanFactoryPointcutAdvisor를 등록해준다.
+<aop:config> <!--AOP설정을 담는 부모 태그다. 필요에 따라 AspectJAdvisorProxyCreator 빈으로 등록해준다.-->
+    <aop:pointcut id="transactionPointcut" expression="execution(* *..*ServiceImple.upgrade*(..))" /> <!--expression의 표현식을 프로퍼티로 가진 AspectJExpressionPoincut을 빈으로 등록해준다.-->
+    <aop:advisor advice-ref="transactionAdvice" pointcut-ref="transactionPointcut" /> <!--advice와 pointcut의 ref를 프로퍼티로 갖는 DefaultBeanFactoryPointcutAdvisor를 등록해준다.-->
 </aop:config>
 ```
     
@@ -200,29 +200,29 @@ timeout_NNNN,//제한시간. timout_으로 시작하고 초단위 시간을 뒤�
 ### 6.6.3 포인트컷과 트랜잭션 속성의 적용 전략
 ```xml
 <tx:advice id="transactionAdvice">
-<tx:attributes>
-  <tx:method name="get*" read-only="true" />  <!--get으로 시작하는 메스드에 대해서는 읽기전용 속성을 부여한다. 이메소드가 트랜잭션의 실제 시작위치가 아니라면 읽기전용 속성은 무시된다.-->
-  <tx:method name="*" />  <!--get으로 시작하지 않는 나머지 메소드에는 기본 트랜잭션 속성을 지정한다. 순서가 뒤바뀌지 않도록 주의한다.-->
-</tx:attributes>
+    <tx:attributes>
+        <tx:method name="get*" read-only="true" />  <!--get으로 시작하는 메스드에 대해서는 읽기전용 속성을 부여한다. 이메소드가 트랜잭션의 실제 시작위치가 아니라면 읽기전용 속성은 무시된다.-->
+        <tx:method name="*" />  <!--get으로 시작하지 않는 나머지 메소드에는 기본 트랜잭션 속성을 지정한다. 순서가 뒤바뀌지 않도록 주의한다.-->
+    </tx:attributes>
 </tx:attributes>
 
 <aop:config>
-<aop:advisor advice-ref="transactionAdvice" pointcut="bean(*Service)" />
-<aoP:advisor advice-ref="batchTxAdvice" pointcut="execution(a.b.*BatchJob.*.(..))" />
+    <aop:advisor advice-ref="transactionAdvice" pointcut="bean(*Service)" />
+    <aoP:advisor advice-ref="batchTxAdvice" pointcut="execution(a.b.*BatchJob.*.(..))" />
 </aop:config>
 
 <tx:advice id="transcationAdvice">
-<tx:attributes>...</tx:attributes>
+    <tx:attributes>...</tx:attributes>
 </tx:attributes>
 
 <tx:advice id="batchTxAdvice">
-<tx:attributes>...</tx:attributes>
+    <tx:attributes>...</tx:attributes>
 </tx:attributes>
 ```
 
 프록시 방식 AOP는 같은 타깃 오브젝트 내의 메소드를 호출할 때는 적용되지 않는다.  
 해결책  
-1. 스프링API를 이용해 프록시 오브젝트에 대한 레퍼런스를 가져온뒤에 같은 오브젝트의 메소드 호출도 프록시를 이요하도록 강제하는 방법이다.  
+1. 스프링API를 이용해 프록시 오브젝트에 대한 레퍼런스를 가져온뒤에 같은 오브젝트의 메소드 호출도 프록시를 이용하도록 강제하는 방법이다.  
 2. AspectJ와 같은 타깃 바이트 코드를 직접 조작하는 방식으로 AOP 기술을 적용하는것이다.  
 하지만 그만큼 다른 불편도 뒤따르기 때문에 꼭필요한 경우에만 사용해야한다. AspectJ를 통한 AOP방법은 14장에서 자세히 설명하겠다.
 
