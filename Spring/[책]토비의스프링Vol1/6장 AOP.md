@@ -81,7 +81,7 @@ execution([접근제한자 패턴] 타입패턴 [타입패턴.]이름패턴 (타
     * 예외 이름 패턴
 
 System.out.println(Target.class.getMethod("minus",int.class,int.class));  
-public int springbook.learningtest.spring.pointcut.Targer.minus(int,int) throws java.lang.RuntimeException  
+public int springbook.learningtest.spring.pointcut.Target.minus(int,int) throws java.lang.RuntimeException  
 
 execution(* minus(int,int))  
 리턴 타입은 상관 없이 minus라는 메소드 이름, 두개의 int 파라미터를 가진 모든 메소드를 선정하는 포인트 컷 표현식
