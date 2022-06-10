@@ -199,6 +199,7 @@ class ItemRepositoryTest {
         List<Item> resultItemList = itemPagingResult.getContent();
         for (Item resultItem: resultItemList) {
             System.out.println(resultItem.toString());
+            System.out.println(resultItem.toString());
         }
     }
 
