@@ -1,4 +1,4 @@
-package com.shop.Controller;
+package com.shop.controller;
 
 import com.shop.dto.ItemDto;
 import org.springframework.stereotype.Controller;
