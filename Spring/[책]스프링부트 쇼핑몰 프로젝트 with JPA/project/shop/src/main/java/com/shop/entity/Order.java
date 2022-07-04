@@ -12,7 +12,7 @@ import java.util.List;
 @Entity
 @Table(name = "orders") // order 키워드가 있기 때문에 Order 엔티티에 매핑되는 테이블로 "orders"를 지정합니다.
 @Getter @Setter
-public class Order {
+public class Order extends BaseEntity{
 
     @Id @GeneratedValue
     @Column(name = "order_id")
