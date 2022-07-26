@@ -1,6 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import DataBinding from "@/views/DataBinding";
+import DataBindingInputText from "@/views/DataBindingInputText";
+import DataBindingCheckbox2 from "@/views/DataBindingCheckbox2";
+import EventClick from "@/views/EventClick";
 
 const routes = [
   {
@@ -20,7 +23,23 @@ const routes = [
     path: '/databinding',
     name: 'databinding',
     component: DataBinding
+  },
+  {
+    path: '/databindinginputtext',
+    name: 'databindinginputtext',
+    component: DataBindingInputText
+  },
+  {
+    path: '/databindingcheckbox2',
+    name: 'databindingcheckbox2',
+    component: DataBindingCheckbox2
+  },
+  {
+    path: '/eventclick',
+    name: 'eventclick',
+    component: EventClick
   }
+
 ]
 
 const router = createRouter({
