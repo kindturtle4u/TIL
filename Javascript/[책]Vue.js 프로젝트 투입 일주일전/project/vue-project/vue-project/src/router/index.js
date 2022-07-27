@@ -4,6 +4,7 @@ import DataBinding from "@/views/DataBinding";
 import DataBindingInputText from "@/views/DataBindingInputText";
 import DataBindingCheckbox2 from "@/views/DataBindingCheckbox2";
 import EventClick from "@/views/EventClick";
+import DataBindingList2 from "@/views/DataBindingList2";
 
 const routes = [
   {
@@ -38,6 +39,11 @@ const routes = [
     path: '/eventclick',
     name: 'eventclick',
     component: EventClick
+  },
+  {
+    path: '/databindinglist2',
+    name: 'databindinglist2',
+    component: DataBindingList2
   }
 
 ]
