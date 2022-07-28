@@ -5,6 +5,8 @@ import DataBindingInputText from "@/views/DataBindingInputText";
 import DataBindingCheckbox2 from "@/views/DataBindingCheckbox2";
 import EventClick from "@/views/EventClick";
 import DataBindingList2 from "@/views/DataBindingList2";
+import NestedComponent from "@/views/NestedComponent";
+import ParentComponent from "@/views/ParentComponent";
 
 const routes = [
   {
@@ -44,6 +46,16 @@ const routes = [
     path: '/databindinglist2',
     name: 'databindinglist2',
     component: DataBindingList2
+  },
+  {
+    path: '/nestedcomponent',
+    name: 'nestedcomponent',
+    component: NestedComponent
+  },
+  {
+    path: '/parentcomponent',
+    name: 'parentcomponent',
+    component: ParentComponent
   }
 
 ]
