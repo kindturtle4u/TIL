@@ -56,8 +56,17 @@ const routes = [
     path: '/parentcomponent',
     name: 'parentcomponent',
     component: ParentComponent
+  },
+  {
+    path: '/kakaologin',
+    name: 'kakaologin',
+    component: () => import( /* webpackChunkName: "kakaologin" */ '../views/KakaoLogin.vue')
+  },
+  {
+    path: '/naverlogin',
+    name: 'NaverLogin',
+    component: () => import( /* webpackChunkName: "parent" */ '../views/NaverLogin.vue')
   }
-
 ]
 
 const router = createRouter({
