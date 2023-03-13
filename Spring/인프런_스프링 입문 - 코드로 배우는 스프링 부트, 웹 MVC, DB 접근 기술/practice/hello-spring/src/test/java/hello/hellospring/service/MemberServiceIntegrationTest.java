@@ -23,11 +23,10 @@ class MemberServiceIntegrationTest {
 
 
     @Test
-    @Commit
     void 회원가입() {
         //given
         Member member = new Member();
-        member.setName("abcd100");
+        member.setName("abcd1001");
         //when
         Long saveId = memberService.join(member);
 
