@@ -24,7 +24,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
         exclude = {DataSourceAutoConfiguration.class,
                 DataSourceTransactionManagerAutoConfiguration.class,
                 HibernateJpaAutoConfiguration.class})
-public class MainTests {
+public class
+MainTests {
 
     @Autowired
     private MockMvc mvc;
