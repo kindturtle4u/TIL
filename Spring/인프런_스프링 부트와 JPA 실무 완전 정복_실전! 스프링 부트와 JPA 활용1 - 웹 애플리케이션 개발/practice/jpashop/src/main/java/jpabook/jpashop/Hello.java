@@ -5,5 +5,5 @@ import lombok.Setter;
 
 @Getter @Setter
 public class Hello {
-    private String Data;
+    private String data;
 }

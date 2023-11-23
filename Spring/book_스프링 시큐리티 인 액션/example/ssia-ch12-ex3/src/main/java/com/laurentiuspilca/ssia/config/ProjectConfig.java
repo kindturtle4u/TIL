@@ -2,6 +2,7 @@ package com.laurentiuspilca.ssia.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
 @Configuration
@@ -14,5 +15,11 @@ public class ProjectConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .anyRequest().authenticated();
     }
+
+    @Override
+    public void configure(WebSecurity web) throws Exception {
+        web.debug(true);
+    }
+
 
 }
