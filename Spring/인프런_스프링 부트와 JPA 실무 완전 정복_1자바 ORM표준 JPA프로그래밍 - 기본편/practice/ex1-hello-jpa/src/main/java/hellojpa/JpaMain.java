@@ -16,10 +16,71 @@ public class JpaMain {
 
         //code
         try {
+
+            Team team = new Team();
+            team.setName("TeamA");
+            em.persist(team);
+
+            Member member = new Member();
+            member.setName("member1");
+            member.setTeam(team);
+            em.persist(member);
+
+            System.out.println("team = " + team);
+            System.out.println("team = " + team.getMembers());
+
+            em.flush();
+            em.clear();
+
+            tx.commit();
+
+
+
+//            Team team = new Team();
+//            team.setName("TeamA");
+//            em.persist(team);
+//
+//            Member member = new Member();
+//            member.setName("member1");
+//            member.setTeam(team);
+//            em.persist(member);
+//
+//            Member member2 = new Member();
+//            member2.setName("member2");
+//            member2.setTeam(team);
+//            em.persist(member2);
+//
+//            em.flush();
+//            em.clear();
+//
+//            Member findMember = em.find(Member.class, member2.getId());
+//            List<Member> members = findMember.getTeam().getMembers();
+//
+//            for (Member m : members) {
+//                System.out.println("m.getName() = " + m.getName());
+//            }
+//
+//            tx.commit();
+//            Team team = new Team();
+//            team.setName("TeamA");
+//            em.persist(team);
+//
+//            Member member = new Member();
+//            member.setName("member1");
+//            member.setTeamId(team.getId());
+//            em.persist(member);
+//
+//
+//            Member findMember = em.find(Member.class, member.getId());
+//            Long findTeamId = findMember.getTeamId();
+//            Team findTeam = em.find(Team.class, findTeamId);
+//
+//            tx.commit();
             //insert
 //            Member member = new Member();
 //            member.setId(1L);
-//            member.setName("memberA");
+//            member.setUsername("memberA");
+//            member.setRoleType(RoleType.ADMIN);
 //            em.persist(member);
 //            tx.commit();
 
@@ -41,15 +102,17 @@ public class JpaMain {
 //                System.out.println("member.getName() = " + member.getName());
 //            }
 
+//
+//            List<Member> result = em.createQuery("select m from Member as m", Member.class)
+//                    .setFirstResult(1)
+//                    .setMaxResults(10)
+//                    .getResultList();
+//
+//            for (Member member : result) {
+//                System.out.println("member.getName() = " + member.getName());
+//            }
 
-            List<Member> result = em.createQuery("select m from Member as m", Member.class)
-                    .setFirstResult(1)
-                    .setMaxResults(10)
-                    .getResultList();
 
-            for (Member member : result) {
-                System.out.println("member.getName() = " + member.getName());
-            }
 
 
         } catch (Exception e) {
