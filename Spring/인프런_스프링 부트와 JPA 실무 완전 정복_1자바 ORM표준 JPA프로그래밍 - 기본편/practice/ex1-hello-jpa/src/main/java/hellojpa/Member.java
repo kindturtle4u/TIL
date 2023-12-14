@@ -9,7 +9,7 @@ import java.util.List;
 
 @Entity
 //@Table(name = "USER")
-public class Member {
+public class Member extends BaseEntity{
     @Id @GeneratedValue
     private Long id;
 

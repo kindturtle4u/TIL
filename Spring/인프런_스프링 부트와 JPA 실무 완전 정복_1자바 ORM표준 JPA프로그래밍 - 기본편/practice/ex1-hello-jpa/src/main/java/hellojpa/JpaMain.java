@@ -16,26 +16,20 @@ public class JpaMain {
 
         //code
         try {
+            Movie movie = new Movie();
+            movie.setDirector("aaaa");
+            movie.setActor("bbbb");
+            movie.setPrice(2000);
+            em.persist(movie);
 
-            Team team = new Team();
-            team.setName("TeamA");
-            em.persist(team);
-
-            Member member = new Member();
-            member.setName("member1");
-            member.setTeam(team);
-            em.persist(member);
-
-            System.out.println("team = " + team);
-            System.out.println("team = " + team.getMembers());
 
             em.flush();
             em.clear();
 
+            Movie find = em.find(Movie.class, movie.getId());
+            System.out.println("find = " + find);
+
             tx.commit();
-
-
-
 //            Team team = new Team();
 //            team.setName("TeamA");
 //            em.persist(team);
