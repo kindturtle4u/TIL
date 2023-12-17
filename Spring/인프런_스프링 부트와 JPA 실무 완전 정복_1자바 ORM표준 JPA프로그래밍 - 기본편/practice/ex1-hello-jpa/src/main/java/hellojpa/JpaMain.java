@@ -16,20 +16,37 @@ public class JpaMain {
 
         //code
         try {
-            Movie movie = new Movie();
-            movie.setDirector("aaaa");
-            movie.setActor("bbbb");
-            movie.setPrice(2000);
-            em.persist(movie);
+            Child child1 = new Child();
+            Child child2 = new Child();
 
+            Parent parent = new Parent();
+            parent.addChild(child1);
+            parent.addChild(child2);
+            em.persist(parent);
 
             em.flush();
             em.clear();
 
-            Movie find = em.find(Movie.class, movie.getId());
-            System.out.println("find = " + find);
+            Parent findParent = em.find(Parent.class, parent.getId());
+            findParent.getChildList().remove(0);
 
+            Child child3 = new Child();
+            findParent.addChild(child3);
             tx.commit();
+//            Movie movie = new Movie();
+//            movie.setDirector("aaaa");
+//            movie.setActor("bbbb");
+//            movie.setPrice(2000);
+//            em.persist(movie);
+//
+//
+//            em.flush();
+//            em.clear();
+//
+//            Movie find = em.find(Movie.class, movie.getId());
+//            System.out.println("find = " + find);
+//
+//            tx.commit();
 //            Team team = new Team();
 //            team.setName("TeamA");
 //            em.persist(team);
@@ -105,8 +122,6 @@ public class JpaMain {
 //            for (Member member : result) {
 //                System.out.println("member.getName() = " + member.getName());
 //            }
-
-
 
 
         } catch (Exception e) {
