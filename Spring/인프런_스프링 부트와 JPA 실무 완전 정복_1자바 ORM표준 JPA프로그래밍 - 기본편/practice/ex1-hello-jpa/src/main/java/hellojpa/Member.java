@@ -15,7 +15,7 @@ public class Member extends BaseEntity{
     private Long id;
 
     @Column(name = "USERNAME")
-    private String name;
+    private String username;
 
     @Embedded
     private Period workPeriod;
@@ -49,12 +49,20 @@ public class Member extends BaseEntity{
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getUsername() {
+        return username;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public Address getWorkAddress() {
+        return workAddress;
+    }
+
+    public void setWorkAddress(Address workAddress) {
+        this.workAddress = workAddress;
     }
 
     public Team getTeam() {
