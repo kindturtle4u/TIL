@@ -3,6 +3,7 @@ package hellojpa;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -15,6 +16,19 @@ public class Member extends BaseEntity{
 
     @Column(name = "USERNAME")
     private String name;
+
+    @Embedded
+    private Period workPeriod;
+    @Embedded
+    private Address homeAddress;
+
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride(name="city", column=@Column(name = "work_city")),
+            @AttributeOverride(name="street", column=@Column(name = "work_street")),
+            @AttributeOverride(name="zipcode", column=@Column(name = "work_zipcode"))
+    })
+    private Address workAddress;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "TEAM_ID")
@@ -49,5 +63,37 @@ public class Member extends BaseEntity{
 
     public void setTeam(Team team) {
         this.team = team;
+    }
+
+    public Period getWorkPeriod() {
+        return workPeriod;
+    }
+
+    public void setWorkPeriod(Period workPeriod) {
+        this.workPeriod = workPeriod;
+    }
+
+    public Address getHomeAddress() {
+        return homeAddress;
+    }
+
+    public void setHomeAddress(Address homeAddress) {
+        this.homeAddress = homeAddress;
+    }
+
+    public Locker getLocker() {
+        return locker;
+    }
+
+    public void setLocker(Locker locker) {
+        this.locker = locker;
+    }
+
+    public List<MemberProduct> getMemberProducts() {
+        return memberProducts;
+    }
+
+    public void setMemberProducts(List<MemberProduct> memberProducts) {
+        this.memberProducts = memberProducts;
     }
 }

@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @RequiredArgsConstructor
+
 @Slf4j
 @Controller
 public class MainController {
@@ -16,3 +17,4 @@ public class MainController {
         return "/main";
     }
 }
+
