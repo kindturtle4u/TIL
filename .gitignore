@@ -2,6 +2,7 @@
 /.idea/
 *.iml
 *.DS_Store
+/target/
 
 # Logs
 logs
