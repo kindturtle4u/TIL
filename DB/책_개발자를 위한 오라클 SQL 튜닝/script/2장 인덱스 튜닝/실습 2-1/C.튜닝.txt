@@ -1,0 +1,17 @@
+CREATE INDEX TB_CUST_IDX01 ON TB_CUST(CUST_NM);
+
+CREATE INDEX TB_ORD_IDX01 ON TB_ORD(CUST_ID, PRDT_CD);
+
+SELECT /*+ INDEX(A TB_CUST_IDX01) */
+  COUNT(*)
+FROM TB_CUST A
+WHERE A.CUST_NM LIKE 'AB%'
+AND EXISTS
+            (
+             SELECT /*+ INDEX(C TB_ORD_IDX01) NL_SJ */ 
+                     '1'
+             FROM TB_ORD C
+             WHERE C.CUST_ID = A.CUST_ID
+             AND C.PRDT_CD LIKE 'AB%'
+            );
+

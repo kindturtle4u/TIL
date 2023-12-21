@@ -1,0 +1,28 @@
+SELECT
+    ORD_NO,
+    ORD_DT,
+    ORD_AMT,
+    PRDT_CD,
+    CUST_ID,
+    INST_ID,
+    INST_DTM,
+    UPDT_ID,
+    UPDT_DTM
+FROM
+(
+    SELECT
+        ORD_NO,
+        ORD_DT,
+        ORD_AMT,
+        PRDT_CD,
+        CUST_ID,
+        INST_ID,
+        INST_DTM,
+        UPDT_ID,
+        UPDT_DTM,
+        RANK() OVER(PARTITION BY ORD_DT 
+                ORDER BY ORD_AMT DESC) AS RN
+    FROM TB_ORD
+    WHERE ORD_DT BETWEEN TO_CHAR(SYSDATE-30, 'YYYYMMDD') AND TO_CHAR(SYSDATE, 'YYYYMMDD'))
+WHERE RN = 1
+ORDER BY ORD_DT;

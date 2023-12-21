@@ -1,0 +1,4 @@
+SELECT /*+ FULL(TB_ORD) */
+*
+FROM TB_ORD
+WHERE SALE_GB IN ('01', '02');

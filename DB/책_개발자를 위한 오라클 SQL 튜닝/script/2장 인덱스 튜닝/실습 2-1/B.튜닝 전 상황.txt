@@ -1,0 +1,14 @@
+SELECT /*+ FULL(A) */
+   COUNT(*)
+FROM TB_CUST A
+WHERE
+  A.CUST_NM LIKE 'AB%' AND
+  EXISTS
+    (
+        SELECT '1'
+         FROM TB_ORD C
+         WHERE
+       C.CUST_ID = A.CUST_ID AND
+       C.PRDT_CD LIKE 'AB%'
+     ) ;
+

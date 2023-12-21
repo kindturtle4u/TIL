@@ -1,0 +1,25 @@
+SELECT
+  A.*,
+  CASE
+    WHEN 
+     A.EMP_CNT BETWEEN 0 AND 5 
+      THEN '5명 이하'
+    WHEN 
+     A.EMP_CNT BETWEEN 6 AND 10 
+      THEN '10명 이하'
+    WHEN A.EMP_CNT BETWEEN 11 AND 100 
+      THEN '100명 이하'
+    WHEN A.EMP_CNT BETWEEN 101 AND 1000 
+      THEN '1000명 이하'
+    ELSE '1000명 초과'
+  END AS 소속부서사원수
+FROM
+  (SELECT
+     EMP_NO, EMP_NM, DEPT_NO,
+     (SELECT 
+       FN_GET_EMP_CNT(DEPT_NO) 
+      FROM DUAL
+     ) AS EMP_CNT
+   FROM TB_EMP
+   ) A
+ORDER BY EMP_NM;
