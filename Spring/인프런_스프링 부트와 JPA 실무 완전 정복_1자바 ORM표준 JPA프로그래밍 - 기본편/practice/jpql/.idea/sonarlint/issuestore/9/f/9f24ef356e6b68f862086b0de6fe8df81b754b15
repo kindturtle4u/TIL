@@ -1,0 +1,10 @@
+
+G	java:S106%"+Replace this use of System.out by a logger.(ëË¡8ÁçÙÀÈ1
+G	java:S106&"+Replace this use of System.out by a logger.( ı¤„8•îûÀÈ1
+X	java:S125*"<This block of commented-out lines of code should be removed.(ë†÷–8ÂçÙÀÈ1
+X	java:S1251"<This block of commented-out lines of code should be removed.(ë†÷–8ÂçÙÀÈ1
+]	java:S125:"<This block of commented-out lines of code should be removed.(”­„²ùÿÿÿÿ8ÂçÙÀÈ1
+U
+java:S1128"3Remove this unused import 'org.hibernate.SQLQuery'.(±ô£½ùÿÿÿÿ8ÉÊêÀÈ1
+P
+java:S1128".Remove this unused import 'java.util.HashMap'.(™˜”€ùÿÿÿÿ8ÉÊêÀÈ1
