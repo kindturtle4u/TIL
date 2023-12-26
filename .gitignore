@@ -1,8 +1,8 @@
 ### Intellij ###
-/.idea/
+.idea/
 *.iml
 *.DS_Store
-/target/
+target/
 
 # Logs
 logs
