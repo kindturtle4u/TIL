@@ -17,3 +17,5 @@ Q
 !src/main/java/jpql/memberDTO.java,c/a/ca2c4072a0b8976ed0bf604a0c8c7bc2e092ca19
 Q
 !src/main/java/jpql/MemberDTO.java,a/c/ac43a7f82ea8276bfa0a61733ea6978291d24a8f
+V
+&src/main/java/dialect/MyH2Dialect.java,e/6/e6e9f007abdf7c4f3520839510a59cf86525c42e

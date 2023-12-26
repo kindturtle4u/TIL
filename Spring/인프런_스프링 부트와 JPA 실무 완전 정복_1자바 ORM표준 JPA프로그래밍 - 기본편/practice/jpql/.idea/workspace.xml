@@ -5,43 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4a54b1f9-ad68-4005-ad26-a9b5edece3e2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jpa-buddy.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/e/0e58b7dcb8bad1660a7e35ef6082b3ff6155f43c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/0/10ab83bba40df9acbbefd884d73bafd648e888b2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/4/442292b8a7efeabbe4cc176709b833b1792140ec" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/f/9f24ef356e6b68f862086b0de6fe8df81b754b15" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/c/ac43a7f82ea8276bfa0a61733ea6978291d24a8f" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/8/c853ec6c8e04d0c966d79bcfbc98bdb75a69e3ac" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/a/ca2c4072a0b8976ed0bf604a0c8c7bc2e092ca19" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/9/e9551705f4093a365e21dde8b5618d23f25e140f" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/a/ead98430e2d109285da55ccb7104a4bb09edb75b" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/0/e/0e58b7dcb8bad1660a7e35ef6082b3ff6155f43c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/1/0/10ab83bba40df9acbbefd884d73bafd648e888b2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/4/4/442292b8a7efeabbe4cc176709b833b1792140ec" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/9/f/9f24ef356e6b68f862086b0de6fe8df81b754b15" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/a/c/ac43a7f82ea8276bfa0a61733ea6978291d24a8f" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/c/8/c853ec6c8e04d0c966d79bcfbc98bdb75a69e3ac" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/c/a/ca2c4072a0b8976ed0bf604a0c8c7bc2e092ca19" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/e/9/e9551705f4093a365e21dde8b5618d23f25e140f" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/e/a/ead98430e2d109285da55ccb7104a4bb09edb75b" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/jpql/Address.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/jpql/JpaMain.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/jpql/Member.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/jpql/MemberDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/jpql/Orders.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/jpql/Product.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/jpql/Team.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../10.객체지향 쿼리 언어1 - 기본문법.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../10.객체지향 쿼리 언어1 - 기본문법.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dialect/MyH2Dialect.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/META-INF/persistence.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/dialect/MyH2Dialect.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/jpql/Address.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/jpql/JpaMain.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/jpql/Member.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/jpql/MemberDTO.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/jpql/Orders.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/jpql/Product.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/jpql/Team.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Practice/Spring/spring-security-jwt-login/src/main/java/com/example/springsecurityjwtlogin/common/entity/BaseEntity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../11.객체지향 쿼리 언어2 - 중급문법.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../11.객체지향 쿼리 언어2 - 중급문법.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/f/9f24ef356e6b68f862086b0de6fe8df81b754b15" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/f/9f24ef356e6b68f862086b0de6fe8df81b754b15" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/jpql/JpaMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jpql/JpaMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/jpql/Team.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jpql/Team.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,6 +42,9 @@
   <component name="GitToolBoxStore">
     <option name="projectConfigVersion" value="5" />
   </component>
+  <component name="JpbToolWindowState">
+    <option name="isToolWindowVisible" value="false" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 8
 }</component>
@@ -68,24 +52,24 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.JpaMain.executor": "Debug",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "master",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/namsangjae/IdeaProjects/TIL/Spring/인프런_스프링 부트와 JPA 실무 완전 정복_1자바 ORM표준 JPA프로그래밍 - 기본편/practice/jpql/src/main/resources",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "configurable.group.appearance",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.JpaMain.executor&quot;: &quot;Debug&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/namsangjae/IdeaProjects/TIL/Spring/인프런_스프링 부트와 JPA 실무 완전 정복_1자바 ORM표준 JPA프로그래밍 - 기본편/practice/jpql/src/main/resources&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.appearance&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/resources" />
@@ -111,6 +95,9 @@
       <updated>1703083114006</updated>
       <workItem from="1703083116723" duration="1293000" />
       <workItem from="1703084436186" duration="6037000" />
+      <workItem from="1703171939253" duration="4176000" />
+      <workItem from="1703482924656" duration="4055000" />
+      <workItem from="1703602600456" duration="4191000" />
     </task>
     <servers />
   </component>

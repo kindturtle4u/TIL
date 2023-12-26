@@ -1,6 +1,7 @@
 package jpql;
 
 import org.hibernate.SQLQuery;
+import org.hibernate.mapping.Collection;
 
 import javax.persistence.*;
 import java.util.HashMap;
@@ -17,25 +18,60 @@ public class JpaMain {
 
         //code
         try {
-            Team team = new Team();
-            team.setName("team");
-            em.persist(team);
+            Team teamA = new Team();
+            teamA.setName("teamA");
+            em.persist(teamA);
 
-            Member member = new Member();
-            member.setUsername("member1" );
-            member.setAge(10);
-            member.changeTeam(team);
-            em.persist(member);
+            Team teamB = new Team();
+            teamB.setName("teamB");
+            em.persist(teamB);
 
-            em.flush();
-            em.clear();
+            Member member1 = new Member();
+            member1.setUsername("회원1");
+            member1.changeTeam(teamA);
+            em.persist(member1);
 
-            String query = "select m from Member m inner join m.team t";
-            List<Member> resultList = em.createQuery(query, Member.class)
-                    .getResultList();
+            Member member2 = new Member();
+            member2.setUsername("회원2");
+            member2.changeTeam(teamA);
+            em.persist(member2);
 
-            System.out.println(resultList.get(0));
-            System.out.println(resultList.get(0).getTeam());
+            Member member3 = new Member();
+            member3.setUsername("회원3");
+            member3.changeTeam(teamB);
+            em.persist(member3);
+
+//            em.flush();
+//            em.clear();
+
+            // flush 자동호출
+            int resultCount = em.createQuery("update Member m set m.age = 20")
+                    .executeUpdate();
+
+            //em.clear();
+            Member findMember = em.find(Member.class, member1.getId());
+
+            System.out.println("findMember.getAge() = " + findMember.getAge());
+//            //String query = "select m from Member m join fetch m.team";
+//            String query = "select m from Member m where m.id = :member";
+//            Member findMember = em.createQuery(query, Member.class)
+//                    .setParameter("member", member1.getId())
+//                    .getSingleResult();
+//
+//            System.out.println("findMember = " + findMember);
+//            List<Team> resultList = em.createQuery(query, Team.class).getResultList();
+//
+//            for (Team team : resultList) {
+//                System.out.println("team = " + team.getName() + "|members: " + team.getMembers().size());
+//            }
+//            for (Member member : resultList) {
+//                System.out.println("member = " + member.getUsername() + ", " + member.getTeam().getName());
+//            }
+//            String query = "select t.members.size from Team t";
+//            em.createQuery(query, Collection.class).getResultList();
+
+//            System.out.println(resultList.get(0));
+//            System.out.println(resultList.get(0).getTeam());
 
 
 //            List<MemberDTO> resultList = em.createQuery("select new jpql.MemberDTO(m.username, m.age) from Member as m", MemberDTO.class)
