@@ -1,7 +1,7 @@
 package com.example.springsecurityjwtlogin;
 
-import com.example.springsecurityjwtlogin.user.entity.User;
-import com.example.springsecurityjwtlogin.user.repository.UserRepository;
+import com.example.springsecurityjwtlogin.domain.user.entity.User;
+import com.example.springsecurityjwtlogin.domain.user.repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;

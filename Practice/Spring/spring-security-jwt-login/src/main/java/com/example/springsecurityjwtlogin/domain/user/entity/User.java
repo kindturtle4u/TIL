@@ -1,22 +1,40 @@
 package com.example.springsecurityjwtlogin.domain.user.entity;
 
+import com.example.springsecurityjwtlogin.domain.user.enums.UserType;
 import com.example.springsecurityjwtlogin.global.common.entity.BaseEntity;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
+
+import java.time.LocalDate;
 
 @Getter
 @Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
+@Entity(name = "users")
 public class User extends BaseEntity {
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id", nullable = false)
     private Long id;
+
+    private String loginId;
 
     private String password;
 
     private String name;
+
+    private String nickName;
+
+    private LocalDate birthDay;
+
+    private String phoneNumber;
+
+    private String email;
+
+
+    @Enumerated(EnumType.STRING)
+    private UserType userType;
+
 }
