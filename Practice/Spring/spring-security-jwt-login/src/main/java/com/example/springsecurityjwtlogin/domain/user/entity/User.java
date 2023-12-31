@@ -15,7 +15,7 @@ import java.time.LocalDate;
 @Entity(name = "users")
 public class User extends BaseEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="id", nullable = false)
     private Long id;
 
@@ -36,5 +36,4 @@ public class User extends BaseEntity {
 
     @Enumerated(EnumType.STRING)
     private UserType userType;
-
 }
