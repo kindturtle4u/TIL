@@ -1,0 +1,11 @@
+spring:
+  profiles:
+    active: local
+    group:
+      local: local, common
+      dev: dev, common
+      prod: prod, common
+    include: include
+
+test.common: "default"
+

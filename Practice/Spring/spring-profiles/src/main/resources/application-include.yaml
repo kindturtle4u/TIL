@@ -1,0 +1,20 @@
+spring:
+  config:
+    activate:
+      on-profile: "local"
+
+test.include: "include.local"
+---
+spring:
+  config:
+    activate:
+      on-profile: "dev"
+
+test.include: "include.dev"
+---
+spring:
+  config:
+    activate:
+      on-profile: "prod"
+
+test.include: "include.prod"

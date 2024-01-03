@@ -1,0 +1,8 @@
+spring:
+  config:
+    activate:
+      on-profile: "dev"
+
+test.name: "dev"
+test.common: "dev"
+
