@@ -22,6 +22,4 @@ public class Member {
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "member")
     private List<Order> orders = new ArrayList<>();
-
-
 }
