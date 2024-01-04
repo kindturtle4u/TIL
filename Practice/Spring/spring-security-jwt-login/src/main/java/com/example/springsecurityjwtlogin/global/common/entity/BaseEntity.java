@@ -1,12 +1,11 @@
 package com.example.springsecurityjwtlogin.global.common.entity;
 
 
-import jakarta.persistence.Column;
 import jakarta.persistence.EntityListeners;
 import jakarta.persistence.MappedSuperclass;
 import lombok.Getter;
-import org.springframework.data.annotation.CreatedBy;
-import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedBy;
+import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
@@ -14,12 +13,10 @@ import java.time.LocalDateTime;
 @Getter
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
-public abstract class BaseEntity extends BaseModifiedEntity {
-    @CreatedBy
-    @Column(updatable = false, nullable = false)
-    private String createdBy;
+public abstract class BaseEntity extends BaseCreatedEntity {
+    @LastModifiedBy
+    private String modifiedBy;
 
-    @CreatedDate
-    @Column(updatable = false, nullable = false)
-    private LocalDateTime createAt;
+    @LastModifiedDate
+    private LocalDateTime modifiedAt;
 }

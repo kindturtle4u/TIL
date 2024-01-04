@@ -53,7 +53,7 @@ class OrderServiceTest {
                 .as("주문 가격은 가격 * 수량이다.")
                 .isEqualTo(book.getPrice() * orderCount);
 
-        assertThat(book.getStockQuntity())
+        assertThat(book.getStockQuantity())
                 .as("주문 수량만큼 재고가 줄어야한다.")
                 .isEqualTo(8);
     }
@@ -62,7 +62,7 @@ class OrderServiceTest {
         Item book = new Book();
         book.setName(name);
         book.setPrice(price);
-        book.setStockQuntity(stockQuntity);
+        book.setStockQuantity(stockQuntity);
         em.persist(book);
         return book;
     }
@@ -108,7 +108,7 @@ class OrderServiceTest {
                 .as("주문 취소시 상태는 CANCEL 이다.")
                 .isEqualTo(OrderStatus.CANCEL);
 
-        assertThat(item.getStockQuntity())
+        assertThat(item.getStockQuantity())
                 .as("주문이 취소된 상품은 그만큼 재고가 증가해야한다.")
                 .isEqualTo(10);
     }
