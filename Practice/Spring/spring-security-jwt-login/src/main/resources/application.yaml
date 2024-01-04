@@ -1,11 +1,6 @@
-
-
-# H2 데이터베이스의 웹 콘솔 기능 활성화
 spring:
   profiles:
-    default: local
-
-common.sample: test
+    active: local
 
 
 

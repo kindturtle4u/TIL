@@ -23,7 +23,6 @@ public class SpringSecurityJwtLoginApplication {
                     .name("장현식")
                     .build();
 
-
             userRepository.save(user);
         };
     }
