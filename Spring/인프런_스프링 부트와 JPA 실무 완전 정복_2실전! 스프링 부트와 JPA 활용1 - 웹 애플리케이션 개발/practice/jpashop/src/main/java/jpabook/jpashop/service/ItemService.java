@@ -23,7 +23,6 @@ public class ItemService {
         findItem.setPrice(price);
         findItem.setName(name);
         findItem.setStockQuantity(stockQuntity);
-        return findItem;
     }
 
     @Transactional(readOnly = true)
