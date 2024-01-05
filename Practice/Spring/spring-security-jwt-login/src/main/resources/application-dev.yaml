@@ -1,0 +1,28 @@
+# H2 데이터베이스의 웹 콘솔 기능 활성화
+spring:
+  config:
+    activate:
+      on-profile: dev
+
+  datasource:
+    driver-class-name:
+    url:
+    hikari:
+      username:
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: false
+    properties:
+      hibernate:
+        show_sql: false
+        format_sql: false
+
+  sql:
+    init:
+      schema-locations: classpath:schema.sql
+      mode: never
+
+server:
+  port: 8081
+
