@@ -1,7 +1,0 @@
-
-ujavascript:S3776"TRefactor this function to reduce its Cognitive Complexity from 17 to the 15 allowed.(‰­›„ûÿÿÿÿ
-`javascript:S1854"?Remove this useless assignment to variable "groupingSeparator".(ªí‘Îüÿÿÿÿ
-javascript:S4165#"qReview this redundant assignment: "groupingSeparator" already holds the assigned value along all execution paths.(ÑÉ±
-javascript:S4165&"qReview this redundant assignment: "groupingSeparator" already holds the assigned value along all execution paths.(ÑÉ±
-Œjavascript:S4165'"pReview this redundant assignment: "decimalSeparator" already holds the assigned value along all execution paths.(±¡ê¤
-?javascript:S1252"Remove this commented out code.(­ËÂáùÿÿÿÿ
