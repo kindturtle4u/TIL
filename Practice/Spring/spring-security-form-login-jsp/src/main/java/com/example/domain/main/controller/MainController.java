@@ -9,27 +9,35 @@ import org.springframework.web.servlet.ModelAndView;
 @Slf4j
 public class MainController {
 
-    @GetMapping(value = {"", "/"})
+    @GetMapping( "/main")
     public String main() {
         log.info("main");
         return "index";
     }
 
-    @GetMapping("/loginForm")
+    @GetMapping("loginForm")
     public String login() {
         log.info("login");
         return "loginForm";
     }
 
-    @GetMapping("/auth/page")
-    public String auth() {
-        log.info("auth");
-        return "auth/page";
+    @GetMapping("/user/page")
+    public String user() {
+        log.info("user");
+        return "user/page";
     }
 
     @GetMapping("/admin/page")
     public String admin() {
-        log.info("auth");
-        return "auth/page";
+        log.info("admin");
+        return "admin/page";
     }
+
+    @GetMapping("/biz/page")
+    public String biz() {
+        log.info("biz");
+        return "biz/page";
+    }
+
+
 }

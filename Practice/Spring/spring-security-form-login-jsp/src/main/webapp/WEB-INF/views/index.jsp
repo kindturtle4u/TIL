@@ -19,7 +19,8 @@
         <p><a href="/logout">로그아웃</a></p>
     </sec:authorize>
 
-    <p><a href="/auth/page">Auth</a></p>
+    <p><a href="/user/page">User</a></p>
+    <p><a href="/biz/page">Biz</a></p>
     <p><a href="/admin/page">Admin</a></p>
 </body>
 </html>

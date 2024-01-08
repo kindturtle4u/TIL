@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
-@Transactional
+@Transactional(readOnly = true)
 @RequiredArgsConstructor
 public class MemberService {
     private final MemberRepository memberRepository;
@@ -17,6 +17,7 @@ public class MemberService {
     /**
      * 회원가입
      */
+    @Transactional
     public Long join(Member member) {
         validateDuplicateMember(member);
         memberRepository.save(member);
@@ -33,13 +34,17 @@ public class MemberService {
     }
 
     // 회원전체 조회
-    @Transactional(readOnly = true)
     public List<Member> findMembers() {
         return memberRepository.findAll();
     }
 
-    @Transactional(readOnly = true)
     public Member findOne(Long memberId) {
         return memberRepository.findOne(memberId);
+    }
+
+    @Transactional
+    public void update(Long id, String name) {
+        Member member = memberRepository.findOne(id);
+        member.setName(name);
     }
 }

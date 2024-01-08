@@ -9,7 +9,7 @@
     <title>Document</title>
 </head>
 <body>
-    <p>Auth Page</p>
+    <p>Biz Page</p>
     <p><sec:authentication property="principal.username"/></p>
 
     <p><a href="/">Home</a></p>
