@@ -25,8 +25,11 @@ import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.util.MultiValueMap;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import java.io.IOException;
+import java.util.List;
 
 import static com.example.global.security.enums.Role.*;
 
@@ -76,11 +79,16 @@ public class SecurityConfig {
                                     System.out.println("authentication : " + authentication.getName());
                                     System.out.println(request.getParameter("next"));
 
-                                    //URL 빌더 사용해서 변경.... 귀찮아서 걍 replace 해놈
-                                    String next = request.getHeader("Referer").replace("http://localhost:8080/loginForm?next=", "");
+                                    // next 페이지로 이동
+                                    UriComponentsBuilder uriComponentsBuilder = UriComponentsBuilder.fromUriString(request.getHeader("Referer"));
+                                    MultiValueMap<String, String> queryParams = uriComponentsBuilder.build().getQueryParams();
+                                    List<String> next = queryParams.get("next");
 
-
-                                    response.sendRedirect(next); // 인증이 성공한 후에는 root로 이동
+                                    String returnUrl = "/";
+                                    if (next != null && !next.isEmpty()) {
+                                        returnUrl = next.get(0);
+                                    }
+                                    response.sendRedirect(returnUrl); // 인증이 성공한 후에는 root로 이동
                                 }
                             }
                     )
@@ -123,6 +131,8 @@ public class SecurityConfig {
                         System.out.println("logoutSuccessHandler");
                         response.sendRedirect("/");
                     }) // 로그아웃 성공 핸들러
+                    .invalidateHttpSession(true)
+                    .clearAuthentication(true)
                     .deleteCookies("remember-me");
         });
 
@@ -130,10 +140,10 @@ public class SecurityConfig {
                 (req) ->
                         req
                                 .requestMatchers("/WEB-INF/views/**").permitAll()
-                                .requestMatchers("/auth/**").hasRole(USER.name())
-                                .requestMatchers("/admin/**").hasRole(ADMIN.name())
+                                .requestMatchers("/user/**").hasRole(USER.name())
                                 .requestMatchers("/biz/**").hasRole(BIZ.name())
-                                .anyRequest().authenticated()
+                                .requestMatchers("/admin/**").hasRole(ADMIN.name())
+                                .anyRequest().permitAll()
 
 
         );
@@ -161,6 +171,10 @@ public class SecurityConfig {
                 System.out.println("authenticationEntryPoint");
                 response.sendRedirect("/loginForm?next=" + request.getRequestURI());
             });
+
+
+
+
         });
 
         // 등록안해도 자동으로 등록됨.
