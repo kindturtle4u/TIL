@@ -1,6 +1,9 @@
 package com.example.global.security.config;
 
 
+import com.example.domain.user.repository.UserRepository;
+import com.example.global.security.CustomAuthenticationProvider;
+import com.example.global.security.CustomUserDetailService;
 import com.example.global.security.enums.Role;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -37,7 +40,7 @@ import static com.example.global.security.enums.Role.*;
 @EnableWebSecurity
 @RequiredArgsConstructor
 public class SecurityConfig {
-    private final UserDetailsService userDetailsService;
+    private final UserRepository userRepository;
 
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer() {
@@ -54,7 +57,7 @@ public class SecurityConfig {
 
 
     @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
         // csrf 사용안함
         http.csrf(csrf -> csrf.disable());
@@ -178,7 +181,7 @@ public class SecurityConfig {
         });
 
         // 등록안해도 자동으로 등록됨.
-        http.authenticationProvider(authenticationProvider());
+        // http.authenticationProvider(authenticationProvider());
 
 
         return http.build();
@@ -188,15 +191,27 @@ public class SecurityConfig {
     public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
         return config.getAuthenticationManager();
     }
+//
+//    @Bean
+//    public AuthenticationProvider authenticationProvider() {
+//        DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
+//        daoAuthenticationProvider.setPasswordEncoder(passwordEncoder());
+//        daoAuthenticationProvider.setUserDetailsService(userDetailsService);
+//        return daoAuthenticationProvider;
+//    }
 
     @Bean
     public AuthenticationProvider authenticationProvider() {
-        DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
-        daoAuthenticationProvider.setPasswordEncoder(passwordEncoder());
-        daoAuthenticationProvider.setUserDetailsService(userDetailsService);
-        return daoAuthenticationProvider;
+        // custom 만들지않으면 DaoAuthenticationProvider 가 자동으로 등록됨.
+        // InitializeUserDetailsManagerConfigurer
+        // 기본적으로 DaoAuthenticationProvider를 등록을 해주는데 이때 bean으로 등록 된 UserDetailsService와 PasswordEncoder를 찾아와 설정해준다
+        return new CustomAuthenticationProvider(userDetailsService(), passwordEncoder());
     }
 
+    @Bean
+    public UserDetailsService userDetailsService() {
+        return new CustomUserDetailService(userRepository);
+    }
 
     @Bean
     public PasswordEncoder passwordEncoder() {
