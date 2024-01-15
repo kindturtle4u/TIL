@@ -46,3 +46,4 @@ public class DevtoolAutoLogin implements HandlerInterceptor {
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
     }
 }
+
