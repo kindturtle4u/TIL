@@ -1,7 +1,3 @@
-import EventListener from './pages/EventListener'
-import OnClick from './pages/OnClick'
-import ReactOnClick from './pages/ReactOnClick'
-import DispatchEvent from './pages/DispatchEvent'
 import EventBubbling from './pages/EventBubbling'
 import StopPropagation from './pages/StopPropagation'
 import VariousInputs from './pages/VariousInputs'
@@ -20,10 +16,10 @@ export default function App() {
         <VariousInputs />
         <StopPropagation />
         <EventBubbling />
-        <DispatchEvent />
+        {/*<DispatchEvent />
         <ReactOnClick />
         <OnClick />
-        <EventListener />
+        <EventListener />*/}
       </div>
   )
 }
