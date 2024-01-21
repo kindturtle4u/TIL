@@ -3,6 +3,7 @@
 *.iml
 *.DS_Store
 target/
+build/
 
 # Logs
 logs
