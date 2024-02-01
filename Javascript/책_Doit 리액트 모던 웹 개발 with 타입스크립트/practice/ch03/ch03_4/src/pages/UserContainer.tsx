@@ -17,7 +17,7 @@ export default function UserContainer() {
   return (
     <section className="mt-4">
       <Title>UserContainer</Title>
-      <div className="flex flex-wrap items-center justify-center p-4 mt-4">
+      <div className="flex flex-wrap items-center justify-start p-4 mt-4">
         {children}
       </div>
     </section>

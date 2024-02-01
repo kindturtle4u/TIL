@@ -7,7 +7,7 @@ export type AvatarProps = DivProps & {
 }
 // prettier-ignore
 export const Avatar: FC<AvatarProps> = ({
-  className: _className, style, src, size, ...props 
+  className: _className, style, src, size, ...props
 }) => {
   const w_or_h = size ?? '3rem'
   const className = ['rounded-full bg-cover bg-gray-300', _className].join(' ')
@@ -16,7 +16,9 @@ export const Avatar: FC<AvatarProps> = ({
       {...props}
       src={src}
       width={w_or_h}
+      minWidth={w_or_h}
       height={w_or_h}
+      minHeight={w_or_h}
       className={className}
       style={style}/>
   )
