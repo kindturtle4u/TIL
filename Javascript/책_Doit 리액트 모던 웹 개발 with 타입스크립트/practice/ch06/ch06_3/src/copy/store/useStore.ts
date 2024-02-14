@@ -7,7 +7,7 @@ import {thunk} from 'redux-thunk'
 const useLogger = process.env.NODE_ENV !== 'production'
 
 const initializeStore = () => {
-  const middleware: any = () => new Tuple(thunk, logger)
+  const middleware: any = () => new Tuple(thunk,logger)
 
   const store = configureStore({reducer: rootReducer, middleware})
   return store

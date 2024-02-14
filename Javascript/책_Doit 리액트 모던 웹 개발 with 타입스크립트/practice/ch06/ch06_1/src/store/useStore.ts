@@ -1,4 +1,4 @@
-import {configureStore} from '@reduxjs/toolkit'
+import {configureStore, Tuple} from '@reduxjs/toolkit'
 import {useMemo} from 'react'
 import {rootReducer} from './rootReducer'
 import logger from 'redux-logger'
@@ -7,12 +7,10 @@ import {thunk} from 'redux-thunk'
 const useLogger = process.env.NODE_ENV !== 'production'
 
 const initializeStore = () => {
-  const middleware: any[] = [thunk]
-  if (useLogger) {
-    middleware.push(logger)
-  }
+  const middleware: any = () => new Tuple(thunk, logger)
 
-  const store = null//configureStore({reducer: rootReducer, middleware})
+
+  const store = configureStore({reducer: rootReducer, middleware})
   return store
 }
 

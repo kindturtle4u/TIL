@@ -10,6 +10,7 @@ import {Div, Avatar} from '../components'
 
 export default function Card() {
   const location = useLocation()
+    console.log(location)
   const params = useParams()
   const navigate = useNavigate()
   const [search] = useSearchParams()
