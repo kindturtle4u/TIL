@@ -32,3 +32,5 @@ spring:
   batch:
     jdbc:
       initialize-schema: never
+    job:
+      names: Job
