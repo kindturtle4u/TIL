@@ -1,8 +1,8 @@
-package Thread.control;
+package thread.control;
 
 
 
-import Thread.start.HelloRunnable;
+import thread.start.HelloRunnable;
 
 import static util.MyLogger.log;
 
