@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="study.mybatis.sample.mapper.SampleMapper">
+    <select id="selectSampleList" resultType="study.mybatis.sample.vo.SampleVO">
+        SELECT PP.*
+        FROM (
+        SELECT ROWNUM AS RN
+             , P.*
+        FROM ( SELECT * FROM TDP_FISHERMAN_REQSTDOC_M WHERE BSNS_YEAR = '2023' ) P ) PP
+        WHERE PP.RN BETWEEN #{_skiprows} + 1 AND #{_skiprows} + #{_pagesize}
+    </select>
+</mapper>
